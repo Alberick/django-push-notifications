@@ -125,20 +125,20 @@ def _cm_send_request(
 
 	# If using FCM, optionnally autodiscovers notification related keys
 	# https://firebase.google.com/docs/cloud-messaging/concept-options#notifications_and_data_messages
-	if cloud_type == "FCM" and use_fcm_notifications:
-		notification_payload = {}
-		if "message" in data:
-			notification_payload["body"] = data.pop("message", None)
-
-		for key in FCM_NOTIFICATIONS_PAYLOAD_KEYS:
-			value_from_extra = data.pop(key, None)
-			if value_from_extra:
-				notification_payload[key] = value_from_extra
-			value_from_kwargs = kwargs.pop(key, None)
-			if value_from_kwargs:
-				notification_payload[key] = value_from_kwargs
-		if notification_payload:
-			payload["notification"] = notification_payload
+	# if cloud_type == "FCM" and use_fcm_notifications:
+	# 	notification_payload = {}
+	# 	if "message" in data:
+	# 		notification_payload["body"] = data.pop("message", None)
+    #
+	# 	for key in FCM_NOTIFICATIONS_PAYLOAD_KEYS:
+	# 		value_from_extra = data.pop(key, None)
+	# 		if value_from_extra:
+	# 			notification_payload[key] = value_from_extra
+	# 		value_from_kwargs = kwargs.pop(key, None)
+	# 		if value_from_kwargs:
+	# 			notification_payload[key] = value_from_kwargs
+	# 	if notification_payload:
+	# 		payload["notification"] = notification_payload
 
 	if data:
 		payload["data"] = data
